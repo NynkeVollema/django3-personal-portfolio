@@ -1,0 +1,52 @@
+{% extends "portfolio/base.html"%}
+
+{% load static %}
+
+{% block content %}
+    <!--    <h1>Nynke's portfolio</h1>-->
+        <div class="row justify-content-center my-3">
+          <div class="col-5">
+            <img src="{% static 'portfolio/Nynke_USA_2018.jpg' %}" class="img-fluid">
+          </div>
+        </div>
+
+    <div class="row justify-content-center mb-3">
+      <div class="col-md-9 text-center">
+        <h1 id="hometext" class="font-weight-bold">Nynke Vollema is friendly and cool.</h1>
+      </div>
+    </div>
+
+    <h2 class="mt-5">Portfolio</h2>
+    <hr>
+
+<!--    <a href="{% static 'portfolio/polisblad_als_voorbeeld.pdf' %}">Resumé</a>-->
+<!--    <br>-->
+<!--    <a href="{% url 'blog:all_blogs' %}">Blog page</a>-->
+<!--    <br>-->
+
+<!--    {% for project in projects %}-->
+<!--        <h2>{{ project.title }}</h2>-->
+<!--        <p>{{ project.description }}</p>-->
+<!--        <img src="{{ project.image.url }}" height=250>-->
+<!--        {% if project.url %}-->
+<!--            <br><a href="{{ project.url }}">Link</a>-->
+<!--        {% endif %}-->
+<!--    {% endfor %}-->
+
+    <div class="row">
+      {% for project in projects %}
+        <div class="col-lg-4 col-md-6">
+          {% if project.url %}
+            <a href="{{ project.url }}">
+              <img src="{{ project.image.url }}" class="img-fluid mb-2">
+            </a>
+          {% else %}
+            <img src="{{ project.image.url }}" class="img-fluid mb-2">
+          {% endif %}
+          <h3>{{ project.title }}</h3>
+          <p>{{ project.description }}</p>
+        </div>
+      {% endfor %}
+    </div>
+
+{% endblock %}
