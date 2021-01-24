@@ -23,7 +23,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'q8h#6rxz%bnz!xl^lfely55_8ak*-8d#u848&4s#mvd#2d&ovu'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
 DEBUG = False
 
 ALLOWED_HOSTS = ["nmvollema.pythonanywhere.com"]
@@ -126,3 +125,8 @@ STATIC_ROOT = BASE_DIR / 'static'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 # MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+try:
+    from .local_settings import *
+except ImportError:
+    print("It looks like no local settings file is present. You must be on production.")
